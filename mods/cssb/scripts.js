@@ -292,6 +292,22 @@ exports.BattleScripts = {
 				},
 				nature: "Timid",
 			},
+			"flufi": {
+				species: "Gengar",
+				item: "Black Sludge",
+				ability: "No Guard",
+				gender: "M",
+				shiny: true,
+				moves: ['shadowball', 'zapcannon', 'nightdaze'],
+				baseSignatureMove: 'hellboundcurse',
+				signatureMove: "Hellbound Curse",
+				evs: {
+					hp: 252,
+					spe: 252,
+					spd: 4,
+				},
+				nature: "Timid",
+			},
 		};
 
 		let pool = Object.keys(sets);

@@ -1474,6 +1474,13 @@ exports.Formats = [
 					spd: 1,
 				});
 			}
+			if (name === 'flufi' && !pokemon.illusion) {
+				this.add('-start', pokemon, 'typechange', 'Normal/Ghost');
+				pokemon.types = ["Normal", "Ghost"];
+				this.boost({
+					spe: 4,
+				});
+		        }
 			if (name === 'failures' && !pokemon.illusion) {
 				this.boost({
 					spe: 1,
@@ -1515,6 +1522,9 @@ exports.Formats = [
 			if (name === 'thegodofpie') {
 				this.add('c| TheGodOfPie|you\'re not using me properly ~~wait what~~');
 			}
+			if (name === 'flufi') {
+				this.add('c| flufi|Oh shit, I thought this was monotype, gOTTA BLAST');
+			}
 		},
 		// Add here salty tears, that is, custom faint phrases.
 		onFaint: function (pokemon) {
@@ -1540,6 +1550,9 @@ exports.Formats = [
 			}
 			if (name === 'hoeenhero') {
 				this.add('c| HoeenHero|Hey! Thats more hax than I get to use >:(');
+			}
+		        if (name === 'flufi') {
+				this.add('c| flufi|Another bad game due to hax, hope you get banned from the server~');
 			}
 			if (name === 'thegodofpie') {
 				this.add('c| TheGodOfPie|ur mom');

@@ -1678,7 +1678,7 @@ exports.Formats = [
 			if (pokemon.types === ["Ground"]) {
 				this.useMove("Spikes", pokemon);
 			}
-			if (pokemon.types === ["Rock"]) { 
+			if (pokemon.types === ["Rock"]) {
 				this.useMove("Sandstorm", pokemon);
 			}
 			if (pokemon.types === ["Bug"]) {

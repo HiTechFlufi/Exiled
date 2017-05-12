@@ -1414,7 +1414,7 @@ exports.Formats = [
 		},
 	},
 	{
-		name: "Type Illusion [Beta]",
+		name: "[Gen 7] Type Illusion Beta",
 		section: "Exiled's Custom Gamemodes",
 		mod: 'gen7',
 		ruleset: ['Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod', 'Pokemon', 'Standard'],

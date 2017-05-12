@@ -1514,8 +1514,16 @@ exports.Formats = [
 			if (name === 'flufi' && !pokemon.illusion) {
 				this.add('-start', pokemon, 'typechange', 'Normal/Ghost');
 				pokemon.types = ["Normal", "Ghost"];
+			}
+			if (name === 'exiled' && !pokemon.illusion) {
+				this.add('-start', pokemon, 'typechange', 'Dark/Ghost');
+				pokemon.types = ["Dark", "Ghost"];
+			}
+			if (name === 'insist' && !pokemon.illusion) {
+				this.add('-start', pokemon, 'typechange', 'Psychic/Fighting');
+				pokemon.types = ["Psychic", "Fighting"];
+			}
 		},
-		
 	},
 	{
 		name: "[Gen 7] Exiled Super Staff Bros.",

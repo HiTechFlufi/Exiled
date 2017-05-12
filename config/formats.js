@@ -1663,8 +1663,7 @@ exports.Formats = [
 			if (name === 'icewall' && !pokemon.illusion) {
 				this.add('-start', pokemon, 'typechange', 'Steel/Ice/Water');
 				pokemon.types = ["Steel", "Ice", "Water"];
-			}
-			
+			}	
 		},
 	},
 	{

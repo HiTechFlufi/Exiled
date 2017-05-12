@@ -1416,8 +1416,7 @@ exports.Formats = [
 	{
 		name: "[Gen 7] Type Illusion Beta",
 		section: "Exiled's Custom Gamemodes",
-		mod: "gen7",
-		ruleset: ['[Gen 7] OU'],
+		ruleset: ['[Gen 7 OU]'],
 		desc: [
 			"&bullet; Coded by flufi.",
 			"Nickname a Pokemon a single typing and the Pokemon will change to that typing in battle.",
@@ -1426,7 +1425,6 @@ exports.Formats = [
 		],
 		onSwitchIn: function (pokemon) {
 			let name = toId(pokemon.name);
-
 			if (name === 'fire' && !pokemon.illusion) {
 				this.add('-start', pokemon, 'typechange', 'Fire');
 				pokemon.types = ["Fire"];
@@ -1522,11 +1520,10 @@ exports.Formats = [
 			if (name === 'insist' && !pokemon.illusion) {
 				this.add('-start', pokemon, 'typechange', 'Psychic/Fighting');
 				pokemon.types = ["Psychic", "Fighting"];
-			},
+			}
 		},
-			onModifyPokemon: function (pokemon) {
+		onModifyPokemon: function (pokemon) {
 			let name = toId(pokemon.name);
-
 			if (name === 'fire' && !pokemon.illusion) {
 				this.add('-start', pokemon, 'typechange', 'Fire');
 				pokemon.types = ["Fire"];
@@ -1623,9 +1620,7 @@ exports.Formats = [
 				this.add('-start', pokemon, 'typechange', 'Psychic/Fighting');
 				pokemon.types = ["Psychic", "Fighting"];
 		        }
-				
 		},
-			
 	},
 	{
 		name: "[Gen 7] Exiled Super Staff Bros.",

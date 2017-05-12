@@ -1653,7 +1653,7 @@ exports.Formats = [
 			if (pokemon.types === ["Steel"]) this.useMove("Autotomize", pokemon);
 			if (pokemon.types === ["Electric"]) this.useMove("Electric Terrain", pokemon);
 			if (pokemon.types === ["Normal"]) this.useMove("Metronome", pokemon);
-		}
+		},
 	},
 	{
 		name: "[Gen 7] Exiled Super Staff Bros.",

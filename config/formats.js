@@ -1634,9 +1634,9 @@ exports.Formats = [
 			"Depending on the Pokemon's type, it will use a certain move on switch in.",
 		],
 		onSwitchInPriority: 1,
-                onSwitchIn: function (pokemon) {
-                        if (pokemon.types ===  ["Fire"]) this.useMove("Sunny Day", pokemon);
-		        if (pokemon.types ===  ["Water"]) this.useMove("Rain Dance", pokemon);
+		onSwitchIn: function (pokemon) {
+			if (pokemon.types ===  ["Fire"]) this.useMove("Sunny Day", pokemon);
+			if (pokemon.types ===  ["Water"]) this.useMove("Rain Dance", pokemon);
 			if (pokemon.types ===  ["Grass"]) this.useMove("Grassy Terrain", pokemon);
 			if (pokemon.types ===  ["Psychic"]) this.useMove("Psychic Terrain", pokemon);
 			if (pokemon.types ===  ["Dark"]) this.useMove("Topsy-Turvy", pokemon);
@@ -1653,7 +1653,7 @@ exports.Formats = [
 			if (pokemon.types ===  ["Steel"]) this.useMove("Autotomize", pokemon);
 			if (pokemon.types ===  ["Electric"]) this.useMove("Electric Terrain", pokemon);
 			if (pokemon.types ===  ["Normal"]) this.useMove("Metronome", pokemon);
-              }
+		}
 	},
 	{
 		name: "[Gen 7] Exiled Super Staff Bros.",

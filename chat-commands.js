@@ -127,6 +127,13 @@ exports.commands = {
 			'3. 3.243F6A8885A308D... (Hexadecimal)<br /><br />' +
 			'How many digits of pi do YOU know? Test it out <a href="http://guangcongluo.com/mempi/">here</a>!');
 	},
+	
+	'!fakemonstats': true,
+	'battle!': 'battle',
+	battle: function (target, room, user, connection, cmd) {
+		if (cmd === 'fakemonstats') return this.sendReply("/fakemonstats [Fakemon] - Displays the stats and typing of a fakemon.");
+		if (cmd === 'fakemonstats electiviremega') return this.sendReplyBox("Electivire-Mega<br>Stats: 75/123/107/135/95/135<p>Ability: Huge Power</p><p>Type: Electric/Fighting</p>");
+        },
 
 	'!avatar': true,
 	avatar: function (target, room, user) {

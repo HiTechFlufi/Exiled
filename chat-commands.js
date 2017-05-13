@@ -127,7 +127,7 @@ exports.commands = {
 			'3. 3.243F6A8885A308D... (Hexadecimal)<br /><br />' +
 			'How many digits of pi do YOU know? Test it out <a href="http://guangcongluo.com/mempi/">here</a>!');
 	},
-	
+
 	'!fakemonstats': true,
 	'fakemonstat': 'fakemonstats',
 	fakemonstats: function (target, room, user, connection, cmd) {

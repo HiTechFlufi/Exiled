@@ -129,11 +129,10 @@ exports.commands = {
 	},
 	
 	'!fakemonstats': true,
-	'fakemonstats': 'fakemonstats',
+	'fakemonstat': 'fakemonstats',
 	fakemonstats: function (target, room, user, connection, cmd) {
 		if (cmd === 'fakemonstats') return this.sendReply("/fakemonstats [Fakemon] - Displays the stats and typing of a fakemon.");
 		if (cmd === 'fakemonstats electiviremega') return this.sendReplyBox("Electivire-Mega<br>Stats: 75/123/107/135/95/135<p>Ability: Huge Power</p><p>Type: Electric/Fighting</p>");
-        
 	},
 
 	'!avatar': true,

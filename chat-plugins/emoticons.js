@@ -1,5 +1,6 @@
 'use strict';
 
+const color = require('../config/color');
 let demFeels = function () {};
 demFeels.getEmotes = function () {
 	return {};
@@ -317,6 +318,7 @@ if (typeof demFeels.extendEmotes === 'function') {
 		'kraB': 'https://pbs.twimg.com/media/CkwpRDiUoAAabhz.jpg',
 		'Doge': '//i.imgur.com/jfVcWbz.jpg?1',
 		'feelsmiguel': 'http://68.media.tumblr.com/11c5b846207ed38389ae4b6dec3fcae4/tumblr_npbpfrztSN1uxp9xfo1_1280.jpg',
+		'feelstired': 'https://e.unicode-table.com/orig/53/6d50efe5ecdf3201410a7b2b3b5f40.png',
 	});
 }
 
@@ -325,14 +327,14 @@ const emotes = demFeels.getEmotes();
 const emotesKeys = Object.keys(emotes).sort();
 
 /**
- * Parse emoticons in message.
- *
- * @param {String} message
- * @param {Object} room
- * @param {Object} user
- * @param {Boolean} pm - returns a string if it is in private messages
- * @returns {Boolean|String}
- */
+* Parse emoticons in message.
+*
+* @param {String} message
+* @param {Object} room
+* @param {Object} user
+* @param {Boolean} pm - returns a string if it is in private messages
+* @returns {Boolean|String}
+*/
 function parseEmoticons(message, room, user, pm) {
 	if (typeof message !== 'string' || (!pm && room.disableEmoticons)) return false;
 
@@ -367,32 +369,20 @@ function parseEmoticons(message, room, user, pm) {
 	if (pm) return "<div class='chat' style='display:inline'>" + "<em class='mine'>" + message + "</em></div>";
 
 	let style = "background:none;border:0;padding:0 5px 0 0;font-family:Verdana,Helvetica,Arial,sans-serif;font-size:9pt;cursor:pointer";
-	let name = user.getIdentity(room).substr(0, 1) + user.name;
+	message = "<div class='chat'>" + "<small>" + group + "</small>" + "<button name='parseCommand' value='/user " + user.name + "' style='" + style + "'>" + "<b><font color='" + color(user.userid) + "'>" + user.name + ":</font></b>" + "</button><em class='mine'>" + message + "</em></div>";
 
-	if (Users.ShadowBan.checkBanned(user)) {
-		user.sendTo(room, message = (`${(room.type === 'chat' ? '|c:|' + ~~(Date.now() / 1000) + '|' : '|c|') + name}|/html ${message}`));
-		Users.ShadowBan.addMessage(user, "To " + room, sbanmsg);
-		return true;
-	} else {
-		message = room.add(`${(room.type === 'chat' ? '|c:|' + ~~(Date.now() / 1000) + '|' : '|c|') + name}|/html ${message}`).update();
-	}
-	for (let u in room.users) {
-		let targetUser = Users.get(u);
-		// in case the user is offline
-		if (!targetUser || !targetUser.connected) continue;
-		// if user is ignoring emotes
-		if (targetUser.blockEmoticons) {
-			targetUser.sendTo(room, "|c|" + group + user.name + "|" + originalMessage);
-		}
-	}
+	room.addRaw(message);
+
+	room.update();
+
 	return true;
 }
 
 /**
- * Create a two column table listing emoticons.
- *
- * @return {String} emotes table
- */
+* Create a two column table listing emoticons.
+*
+* @return {String} emotes table
+*/
 function create_table() {
 	let emotes_name = Object.keys(emotes);
 	let emotes_list = [];

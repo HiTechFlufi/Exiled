@@ -377,5 +377,5 @@ exports.commands = {
 		];
 		return this.sendReply(results[Math.floor(16 * Math.random())]);
 	},
-	
+
 };

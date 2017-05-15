@@ -253,14 +253,14 @@ exports.commands = {
 		if (!this.can('broadcast')) return this.errorReply('Access Denied');
 		let targetUser = Users.get(target);
 		room.add(User + ' has begun a riot against ' + targetUser + '.');
-		this.parse('ᕙ༼ຈل͜ຈ༽ᕗ flex your dongers ᕙ༼ຈل͜ຈ༽ᕗ');
+		this.parse('/broadcast ᕙ༼ຈل͜ຈ༽ᕗ flex your dongers ᕙ༼ຈل͜ຈ༽ᕗ');
 	},
 	splat: function (target, room, User) {
 		if (!target) return this.sendReply('/splat needs a target.');
 		if (!this.can('broadcast')) return this.errorReply('Access Denied');
 		let targetUser = Users.get(target);
 		room.add(User + ' has Splatted ' + targetUser + '.');
-		this.parse('you were splatted by the Aerospray PG');
+		this.parse('/broadcast you were splatted by the Aerospray PG');
 	},
 	roasted: function (target, room, User) {
 		if (!target) return this.sendReply('/roasted needs a target.');
@@ -354,4 +354,28 @@ exports.commands = {
 		];
 		return this.sendReplyBox(results[Math.floor(41 * Math.random())]);
 	},
+	randmeta: 'randmetas',
+	randmetas: function (target, room, user) {
+		if (!this.runBroadcast()) return false;
+		let results = [
+			"[Gen 7] OU",
+			"[Gen 7] UU",
+			"[Gen 7] Monotype",
+			"[Gen 7] Monotype Ubers",
+			"[Gen 7] Exiled Super Staff Bros",
+			"[Gen 7] Ash's Pokemon",
+			"[Gen 7] Challenge Cup 1v1",
+			"[Gen 7] Monotype Random Battle",
+			"[Gen 7] Wrestlemania",
+			"[Gen 6] Battle Factory",
+			"[Gen 7] Type Illusion Beta",
+			"[Gen 7] Ubers",
+			"[Gen 7] Random Battle",
+			"[Gen 7] Almost Any Ability",
+			"[Gen 7] Fakemons Random Battle",
+			"[Gen 5] OU",
+		];
+		return this.sendReply(results[Math.floor(16 * Math.random())]);
+	},
+	
 };

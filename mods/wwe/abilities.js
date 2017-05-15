@@ -8,7 +8,7 @@ exports.BattleAbilities = {
 			  move.stab = 0.5;
 		    },
 		    onModifySpePriority: 5,
-		    onModifyAtk: function (spe) {
+		    onModifySpe: function (spe) {
 			  return this.chainModify(1.5);
 		    },
 	  },

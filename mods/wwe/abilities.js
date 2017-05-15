@@ -1,7 +1,7 @@
 'use strict';
 
 exports.BattleAbilities = {
-        "highflying": {
+	"highflying": {
 		    id: "highflying",
 		    name: "High Flying",
 		    onModifyMove: function (move) {

@@ -64,7 +64,6 @@ exports.BattleMovedex = {
 		},
 		secondary: false,
 		category: "Physical",
-		},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Rolling Kick", target);

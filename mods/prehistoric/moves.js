@@ -60,4 +60,4 @@ exports.BattleMovedex = {
 		zMovePower: 150,
 		contestType: "Clever",
 	},
-  };
+};

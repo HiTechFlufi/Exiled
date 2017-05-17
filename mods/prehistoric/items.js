@@ -16,13 +16,16 @@ exports.BattleItems = {
 		gen: 6,
 		desc: "If holder is an Abomasnow, this item allows it to Mega Evolve in battle.",
 	},
-  "stoneorb": {
+	"stoneorb": {
 		id: "stoneorb",
 		name: "Stone Orb",
 		spritenum: 390,
 		onSwitchIn: function (pokemon) {
 			if (pokemon.isActive && pokemon.baseTemplate.species === 'Carracosta') {
-				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+				this.insertQueue({
+					pokemon: pokemon,
+					choice: 'runPrimal',
+				});
 			}
 		},
 		onPrimal: function (pokemon) {
@@ -48,13 +51,16 @@ exports.BattleItems = {
 		gen: 7,
 		desc: "If holder is a Carracosta, this item triggers its Primal Reversion in battle.",
 	},
-  "shellorb": {
+	"shellorb": {
 		id: "shellorb",
 		name: "Shell Orb",
 		spritenum: 41,
 		onSwitchIn: function (pokemon) {
 			if (pokemon.isActive && pokemon.baseTemplate.species === 'Barbaracle') {
-				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+				this.insertQueue({
+					pokemon: pokemon,
+					choice: 'runPrimal',
+				});
 			}
 		},
 		onPrimal: function (pokemon) {
@@ -80,13 +86,16 @@ exports.BattleItems = {
 		gen: 7,
 		desc: "If holder is a Barbaracle, this item triggers its Primal Reversion in battle.",
 	},
-  "spikedorb": {
+	"spikedorb": {
 		id: "spikedorb",
 		name: "Spiked Orb",
 		spritenum: 390,
 		onSwitchIn: function (pokemon) {
 			if (pokemon.isActive && pokemon.baseTemplate.species === 'Chesnaught') {
-				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+				this.insertQueue({
+					pokemon: pokemon,
+					choice: 'runPrimal',
+				});
 			}
 		},
 		onPrimal: function (pokemon) {
@@ -112,13 +121,16 @@ exports.BattleItems = {
 		gen: 7,
 		desc: "If holder is a Chesnaught, this item triggers its Primal Reversion in battle.",
 	},
-  "moonorb": {
+	"moonorb": {
 		id: "moonorb",
 		name: "Moon Orb",
 		spritenum: 41,
 		onSwitchIn: function (pokemon) {
 			if (pokemon.isActive && pokemon.baseTemplate.species === 'Guzzlord') {
-				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+				this.insertQueue({
+					pokemon: pokemon,
+					choice: 'runPrimal',
+				});
 			}
 		},
 		onPrimal: function (pokemon) {
@@ -144,13 +156,16 @@ exports.BattleItems = {
 		gen: 7,
 		desc: "If holder is a Guzzlord, this item triggers its Primal Reversion in battle.",
 	},
-  "blueorb": {
+	"blueorb": {
 		id: "rageorb",
 		name: "Rage Orb",
 		spritenum: 590,
 		onSwitchIn: function (pokemon) {
 			if (pokemon.isActive && pokemon.baseTemplate.species === 'Darmanitan') {
-				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+				this.insertQueue({
+					pokemon: pokemon,
+					choice: 'runPrimal',
+				});
 			}
 		},
 		onPrimal: function (pokemon) {
@@ -176,4 +191,4 @@ exports.BattleItems = {
 		gen: 7,
 		desc: "If holder is a Darmanitan, this item triggers its Primal Reversion in battle.",
 	},
-  };
+};

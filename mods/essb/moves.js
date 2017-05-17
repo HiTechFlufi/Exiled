@@ -95,6 +95,7 @@ exports.BattleMovedex = {
 		},
 		secondary: false,
 		category: "Special",
+		isZ: "hydriumz",
 		onHit: function (target, source, move) {
 			this.add('c|%flufi|Too much water');
 		},

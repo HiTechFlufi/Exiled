@@ -1699,7 +1699,6 @@ exports.Formats = [
 				this.add('c|%flufi|Howdy feelsfdra');
 				this.add('-start', pokemon, 'typechange', 'Water/Electric');
 				pokemon.types = ["Water", "Electric"];
-				
 			}
 			if (name === 'hoeenhero') {
 				this.add('c| HoeenHero|Do I have to? I\'m in the middle of programming.');

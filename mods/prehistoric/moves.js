@@ -48,7 +48,7 @@ exports.BattleMovedex = {
 		category: "Special",
 		desc: "The user heals equal to 100% of the damage dealt; This move is always last in the priority bracket unless used with Custap Berry or Quick Claw.",
 		shortDesc: "Heals 100% of the damage dealt. -1 Priority.",
-		id: "terradrain",                              
+		id: "terradrain",
 		name: "Terra Drain",
 		pp: 5,
 		priority: -1,

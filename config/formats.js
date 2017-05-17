@@ -1427,6 +1427,20 @@ exports.Formats = [
 		},
 	},
 	{
+		name: "[Gen 7] Prehistoric",
+		section: "Pet Mods",
+		mod: "prehistoric",
+		ruleset: ['[Gen 7] Ubers'],
+		banlist: ["Blue Orb"],
+		desc: [
+			"&bullet; Coded by flufi.",
+			"A format that takes place in prehistoric times.",
+			"Over 100 Pokemon get not only a new primal form, but a new signature move.",
+			"",
+			"NOTE: This is a long-term project and probably won't be done until June/July.",
+		],
+	},
+	{
 		name: "[Gen 7] Type Illusion Beta",
 		section: "Exiled's Custom Gamemodes",
 		mod: "gen7",

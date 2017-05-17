@@ -13,7 +13,7 @@ exports.BattlePokedex = {
 		prevo: "binacle",
 		evoLevel: 39,
 		eggGroups: ["Water 3"],
-    		otherFormes: ["barbaracleprimal"],
+		otherFormes: ["barbaracleprimal"],
 	},
 	barbaracleprimal: {
 		num: 689,
@@ -29,7 +29,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Undiscovered", "Water 3"],
 	},
-  carracosta: {
+	carracosta: {
 		num: 565,
 		species: "Carracosta",
 		types: ["Water", "Rock"],
@@ -42,9 +42,9 @@ exports.BattlePokedex = {
 		prevo: "tirtouga",
 		evoLevel: 37,
 		eggGroups: ["Water 1", "Water 3"],
-    otherFormes: ["carracostaprimal"],
+		otherFormes: ["carracostaprimal"],
 	},
-  carracostaprimal: {
+	carracostaprimal: {
 		num: 565,
 		species: "Carracosta-Primal",
 		baseSpecies: "Carracosta",
@@ -58,7 +58,7 @@ exports.BattlePokedex = {
 		color: "Brown",
 		eggGroups: ["Undiscovered", "Water 3"],
 	},
-  chesnaught: {
+	chesnaught: {
 		num: 652,
 		species: "Chesnaught",
 		types: ["Grass", "Fighting"],
@@ -70,9 +70,9 @@ exports.BattlePokedex = {
 		prevo: "quilladin",
 		evoLevel: 36,
 		eggGroups: ["Monster", "Field"],
-    otherFormes: ["chesnaughtprimal"],
-  },
-  chesnaughtprimal: {
+		otherFormes: ["chesnaughtprimal"],
+	},
+	chesnaughtprimal: {
 		num: 652,
 		species: "Chesnaught-Primal",
 		baseSpecies: "Chesnaught",
@@ -86,7 +86,7 @@ exports.BattlePokedex = {
 		color: "Green",
 		eggGroups: ["Undiscovered", "Monster"],
 	},
-  guzzlord: {
+	guzzlord: {
 		num: 799,
 		species: "Guzzlord",
 		types: ["Dark", "Dragon"],
@@ -97,9 +97,9 @@ exports.BattlePokedex = {
 		weightkg: 888,
 		color: "Black",
 		eggGroups: ["Monster", "Undiscovered"],
-    otherFormes: ["guzzlordprimal"],
+		otherFormes: ["guzzlordprimal"],
 	},
-  guzzlordprimal: {
+	guzzlordprimal: {
 		num: 799,
 		species: "Guzzlord-Primal",
 		baseSpecies: "Guzzlord",
@@ -128,7 +128,7 @@ exports.BattlePokedex = {
 		eggGroups: ["Field"],
 		otherFormes: ["darmanitanprimal"],
 	},
-  darmanitanprimal: {
+	darmanitanprimal: {
 		num: 555,
 		species: "Darmanitan-Primal",
 		baseSpecies: "Darmanitan",
@@ -142,4 +142,4 @@ exports.BattlePokedex = {
 		color: "Red",
 		eggGroups: ["Undiscovered", "Field"],
 	},
-  };
+};

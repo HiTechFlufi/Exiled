@@ -360,6 +360,7 @@ exports.BattleAbilities = {
 			this.useMove("Metronome", pokemon);
 			this.useMove("Metronome", pokemon);
 			this.useMove("Metronome", pokemon);
+		},
 	},
 	//astralwobz
 	"wobzdoezjobz": {

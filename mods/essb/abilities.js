@@ -1381,5 +1381,4 @@ exports.BattleAbilities = {
 			move.ignoreAbility = true;
 		},
 	},
-},
 };

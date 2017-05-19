@@ -356,10 +356,6 @@ exports.BattleAbilities = {
 		name: "The Waggling",
 		onStart: function (pokemon) {
 			this.useMove("Metronome", pokemon);
-			this.useMove("Metronome", pokemon);
-			this.useMove("Metronome", pokemon);
-			this.useMove("Metronome", pokemon);
-			this.useMove("Metronome", pokemon);
 		},
 	},
 	//astralwobz

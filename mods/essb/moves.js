@@ -97,9 +97,6 @@ exports.BattleMovedex = {
 		},
 		secondary: false,
 		category: "Special",
-		onStart: function (pokemon) {
-
-		},
 		onHit: function (target, source, move) {
 			this.add('c|%flufi|Suffocate on my fluff!');
 		},

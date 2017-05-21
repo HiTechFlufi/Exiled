@@ -66,12 +66,12 @@ exports.BattleMovedex = {
         accuracy: true,
         flags: {
             protect: 1,
-            mirror: 1
+            mirror: 1,
         },
         secondary: {
-			chance: 100,
-			status: 'brn',
-		},
+		chance: 100,
+		status: 'brn',
+	},
         target: "normal",
         onPrepareHit: function (target, source) {
             this.attrLastMove('[still]');
@@ -89,12 +89,12 @@ exports.BattleMovedex = {
         accuracy: true,
         flags: {
             protect: 1,
-            mirror: 1
+            mirror: 1,
         },
         secondary: {
-			chance: 20,
-			volatileStatus: 'flinch',
-		},
+		chance: 20,
+		volatileStatus: 'flinch',
+	},
         target: "normal",
         onPrepareHit: function (target, source) {
             this.attrLastMove('[still]');
@@ -111,21 +111,20 @@ exports.BattleMovedex = {
         category: "Physical",
         priority: 0,
         accuracy: true,
-        self: {
-			boosts: {
-				atk: -1,
-                spa: -1,
-                spe: 1,
-			},
-		},
         flags: {
             protect: 1,
-            mirror: 1
+            mirror: 1,
         },
         secondary: {
-			chance: 50,
-			status: 'brn',
+		chance: 100,
+		self: {
+			boosts: {
+				atk: -1,
+				spa: -1,
+				spe: 1,
+			},
 		},
+	},
         target: "normal",
         onPrepareHit: function (target, source) {
             this.attrLastMove('[still]');
@@ -145,13 +144,13 @@ exports.BattleMovedex = {
         accuracy: 90,
         multihit: [2, 3],
         self: {
-			boosts: {
-				spd: 1,
-			},
+		boosts: {
+			spd: 1,
 		},
+	},
         flags: {
             protect: 1,
-            mirror: 1
+            mirror: 1,
         },
         secondary: false,
         target: "normal",

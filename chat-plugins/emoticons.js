@@ -311,6 +311,9 @@ if (typeof demFeels.extendEmotes === 'function') {
 		'feelsbern': 'http://i.imgur.com/hSSP1V7.gif',
 		'Doge': '//i.imgur.com/jfVcWbz.jpg',
 		'feelsmiguel': 'http://68.media.tumblr.com/11c5b846207ed38389ae4b6dec3fcae4/tumblr_npbpfrztSN1uxp9xfo1_1280.jpg',
+		'cenawink': 'http://2static1.fjcdn.com/thumbnails/comments/The+champ+thinks+you+draw+the+best+nipples+_dafe3c86d9cdb589df0d29b911ba9cb6.gif',
+		'cenalol': 'http://replygif.net/thumbnail/1548.gif',
+		'spongehigh': 'http://i.imgur.com/13aJA4f.png',
 	});
 }
 

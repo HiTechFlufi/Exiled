@@ -3340,7 +3340,7 @@ exports.BattleItems = {
 		},
 		num: 233,
 		gen: 2,
-		desc: "Holder's Steel-type attacks have 1.2x power.",
+		desc: "Holder's Steel-type attacks have 1.2x power."
 	},
 	"metalpowder": {
 		id: "metalpowder",
@@ -5429,6 +5429,37 @@ exports.BattleItems = {
 		num: 258,
 		gen: 2,
 		desc: "If holder is a Cubone or a Marowak, its Attack is doubled.",
+	},
+	"timeorb": {
+		id: "timeorb",
+		name: "Time Orb",
+		onSwitchIn: function (pokemon) {
+			if (pokemon.isActive && pokemon.baseTemplate.species === 'Dialga') {
+				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
+			}
+		},
+		onPrimal: function (pokemon) {
+			let template = this.getTemplate('Dialga-Primal');
+			pokemon.formeChange(template);
+			pokemon.baseTemplate = template;
+			pokemon.details = template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
+			if (pokemon.illusion) {
+				pokemon.ability = ''; // Don't allow Illusion to wear off
+				this.add('-primal', pokemon.illusion);
+			} else {
+				this.add('detailschange', pokemon, pokemon.details);
+				this.add('-primal', pokemon);
+			}
+			pokemon.setAbility(template.abilities['0']);
+			pokemon.baseAbility = pokemon.ability;
+		},
+		onTakeItem: function (item, source) {
+			if (source.baseTemplate.baseSpecies === 'Dialga') return false;
+			return true;
+		},
+		num: -1004,
+		gen: 7,
+		desc: "If holder is a Dialga, this item triggers its Primal Reversion in battle.",
 	},
 	"timerball": {
 		id: "timerball",

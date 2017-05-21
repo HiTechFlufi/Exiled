@@ -3340,7 +3340,7 @@ exports.BattleItems = {
 		},
 		num: 233,
 		gen: 2,
-		desc: "Holder's Steel-type attacks have 1.2x power."
+		desc: "Holder's Steel-type attacks have 1.2x power.",
 	},
 	"metalpowder": {
 		id: "metalpowder",

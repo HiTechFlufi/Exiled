@@ -3179,6 +3179,20 @@ exports.BattleItems = {
 		gen: 6,
 		desc: "If holder is a Manectric, this item allows it to Mega Evolve in battle.",
 	},
+	"magearnite": {
+		id: "magearnite",
+		name: "Magearnite",
+		spritenum: 596,
+		megaStone: "Magearna-Mega",
+		megaEvolves: "Magearna",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 682,
+		gen: 6,
+		desc: "If holder is a Magearna, this item allows it to Mega Evolve in battle.",
+	},
 	"marangaberry": {
 		id: "marangaberry",
 		name: "Maranga Berry",

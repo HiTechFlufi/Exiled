@@ -3932,6 +3932,20 @@ exports.BattleItems = {
 		gen: 6,
 		desc: "If holder is a Pinsir, this item allows it to Mega Evolve in battle.",
 	},
+	"pikanite": {
+		id: "pikanite",
+		name: "Pikanite",
+		spritenum: 602,
+		megaStone: "Pikachu-Mega",
+		megaEvolves: "Pikachu",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 671,
+		gen: 6,
+		desc: "If holder is a Pikachu, this item allows it to Mega Evolve in battle.",
+	},
 	"pixieplate": {
 		id: "pixieplate",
 		name: "Pixie Plate",

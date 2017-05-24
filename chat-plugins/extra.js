@@ -5,7 +5,6 @@
 'use strict';
 /*eslint no-restricted-modules: [0]*/
 
-
 let messages = [
 	"has vanished into nothingness!",
 	"used Explosion!",
@@ -19,6 +18,8 @@ let messages = [
 	"(Quit: oh god how did this get here i am not good with computer)",
 	"was unfortunate and didn't get a cool message.",
 	"{{user}}'s mama accidently kicked {{user}} from the server!",
+	"felt Insist's wrath.",
+	"got rekt by Travis CI!",
 ];
 
 function clearRoom(room) {
@@ -409,16 +410,9 @@ exports.commands = {
 		this.logModCommand('' + targetUser.name + ' was forcibly logged out by ' + user.name + '.' + (target ? " (" + target + ")" : ""));
 		targetUser.resetName();
 	},
-	showauth: 'hideauth',
-	show: 'hideauth',
 	hide: 'hideauth',
-	hideauth: function (target, room, user, connection, cmd) {
-		if (!user.can('lock')) return this.sendReply("/hideauth - access denied.");
-		if (cmd === 'show' || cmd === 'showauth') {
-			delete user.hideauth;
-			user.updateIdentity();
-			return this.sendReply("You have revealed your auth symbol.");
-		}
+	hideauth: function (target, room, user) {
+		if (!this.can('lock')) return false;
 		let tar = ' ';
 		if (target) {
 			target = target.trim();
@@ -426,15 +420,24 @@ exports.commands = {
 				if (Config.groupsranking.indexOf(target) <= Config.groupsranking.indexOf(user.group)) {
 					tar = target;
 				} else {
-					this.sendReply('The group symbol you have tried to use is of a higher authority than you have access to. Defaulting to \' \' instead.');
+					this.sendReply('The group symbol you have tried to use is of a higher authority than you have access to. Defaulting to \'' + tar + 'instead.');
 				}
 			} else {
-				this.sendReply('You have tried to use an invalid character as your auth symbol. Defaulting to \' \' instead.');
+				this.sendReply('You are now hiding your auth symbol as \'' + tar + '\'.');
 			}
 		}
-		user.hideauth = tar;
+		user.getIdentity = function (roomid) {
+			return tar + this.name;
+		};
 		user.updateIdentity();
-		this.sendReply('You are now hiding your auth symbol as \'' + tar + '\'.');
-		this.logModCommand(user.name + ' is hiding auth symbol as \'' + tar + '\'');
+		return this.sendReply("You are now hiding your auth as ' " + tar + "'.");
+	},
+
+	show: 'showauth',
+	showauth: function (target, room, user) {
+		if (!this.can('lock')) return false;
+		delete user.getIdentity;
+		user.updateIdentity();
+		return this.sendReply("You are now showing your authority!");
 	},
 };

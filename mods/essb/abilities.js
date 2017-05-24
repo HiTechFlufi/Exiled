@@ -144,6 +144,7 @@ exports.BattleAbilities = {
 	"3bawlky5u": {
 		id: "3bawlky5u",
 		name: "3Bawlky5U",
+		isUnbreakable: true,
 		//prankster
 		onModifyPriority: function (priority, pokemon, target, move) {
 			if (move && move.category === 'Status') {
@@ -348,6 +349,15 @@ exports.BattleAbilities = {
 			if (source && source !== target && move && move.flags['contact']) {
 				this.damage(source.maxhp / 8, source, target);
 			}
+		},
+	},
+	//flufi
+	"thewaggling": {
+		id: "thewaggling",
+		name: "The Waggling",
+		onStart: function (pokemon) {
+			this.useMove("Metronome", pokemon);
+			this.useMove("Metronome", pokemon);
 		},
 	},
 	//astralwobz
@@ -690,17 +700,9 @@ exports.BattleAbilities = {
 			move.stab = 2;
 		},
 	},
-	"psychopower": {
-		id: "psychopower",
-		name: "Psycho Power",
-		onTryHit: function (target, source, move) {
-			if (target !== source && move.type === 'Psychic') {
-				if (!this.heal(target.maxhp / 4)) {
-					this.add('-immune', target, '[msg]', '[from] ability: Psycho Power');
-				}
-				return null;
-			}
-		},
+	"heavenlyguard": {
+		id: "heavenlyguard",
+		name: "Heavenly Guard",
 		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod > 0) {
 				this.debug('Filter neutralize');
@@ -1003,23 +1005,19 @@ exports.BattleAbilities = {
 		id: "magmaoverdrive",
 		name: "Magma Overdrive",
 		rating: 4.5,
-		desc: "Desolate Land + Adaptability + Tinted Lens; Fire Moves are 2x stronger; If hit by a Fire Move, it Special Attack raises by 1 stage.",
-		onModifySpAPriority: 5,
-		onModifySpA: function (atk, attacker, defender, move) {
-			if (move.type === 'Fire') {
-				this.debug('Magma Overdrive boost');
-				return this.chainModify(2);
-			}
-		},
+		desc: "Desolate Land + Adaptability + Tinted Lens; If hit by a Fire Move, it Special Attack raises by 1 stage.",
+		//Adaptability
 		onModifyMove: function (move) {
 			move.stab = 2;
 		},
+		//Tinted Lens
 		onModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod < 0) {
 				this.debug('Magma Overdrive boost');
 				return this.chainModify(2);
 			}
 		},
+		//Flash Fire
 		onTryHit: function (target, source, move) {
 			if (target !== source && move.type === 'Fire') {
 				move.accuracy = true;
@@ -1052,6 +1050,7 @@ exports.BattleAbilities = {
 				this.add('-end', target, 'ability: Magma Overdrive', '[silent]');
 			},
 		},
+		//Desolate Land
 		onStart: function (source) {
 			this.setWeather('desolateland');
 		},
@@ -1071,6 +1070,7 @@ exports.BattleAbilities = {
 				}
 			}
 			this.clearWeather();
+			//Piece of Flash Fire
 			pokemon.removeVolatile('flashfire');
 		},
 	},
@@ -1104,8 +1104,23 @@ exports.BattleAbilities = {
 		name: "DesertDragon",
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({atk:2, spe: 2}, source);
+				this.boost({spa:2, spe: 2}, source);
 			}
+		},
+		//Insectize
+		onModifyMovePriority: -1,
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Normal' && move.id !== 'naturalgift' && !move.isZ) {
+				move.type = 'Bug';
+				if (move.category !== 'Status') pokemon.addVolatile('insectize');
+			}
+		},
+		effect: {
+			duration: 1,
+			onBasePowerPriority: 8,
+			onBasePower: function (basePower, pokemon, target, move) {
+				return this.chainModify([0x1333, 0x1000]);
+			},
 		},
 	},
 	"defense": {
@@ -1178,6 +1193,23 @@ exports.BattleAbilities = {
 		onModifyAtk: function (atk, pokemon) {
 			if (pokemon.status) {
 				return this.chainModify(3);
+			}
+		},
+		//Skill Link
+		onModifyMove: function (move) {
+			if (move.multihit && move.multihit.length) {
+				move.multihit = move.multihit[1];
+			}
+			if (move.multiaccuracy) {
+				delete move.multiaccuracy;
+			}
+		},
+		//Dazzling
+		onFoeTryMove: function (target, source, effect) {
+			if ((source.side === this.effectData.target.side || effect.id === 'perishsong') && effect.priority > 0.1 && effect.target !== 'foeSide') {
+				this.attrLastMove('[still]');
+				this.add('cant', this.effectData.target, 'ability: handsBurn', effect, '[of] ' + target);
+				return false;
 			}
 		},
 	},
@@ -1295,6 +1327,221 @@ exports.BattleAbilities = {
 		//uses Topsy Turvy
 		onStart: function (pokemon) {
 			this.useMove('topsyturvy', pokemon);
+		},
+	},
+	//EchoSierra
+	"nogutsnoglory": {
+		id: "nogutsnoglory",
+		name: "No Guts, No Glory",
+		//Quick Feet
+		onModifySpe: function (spe, pokemon) {
+			if (pokemon.status) {
+				return this.chainModify(1.5);
+			}
+		},
+		//Guts
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk, pokemon) {
+			if (pokemon.status) {
+				return this.chainModify(1.5);
+			}
+		},
+		//Gale Wings
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move && move.type === 'Flying' && pokemon.hp === pokemon.maxhp) return priority + 1;
+		},
+		//adaptability + scraopy
+		onModifyMove: function (move) {
+			move.stab = 2;
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity['Fighting'] = true;
+				move.ignoreImmunity['Normal'] = true;
+			}
+		},
+		//reckless
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.recoil || move.hasCustomRecoil) {
+				this.debug('Reckless boost');
+				return this.chainModify([0x1333, 0x1000]);
+			}
+		},
+		//poison heal
+		onDamage: function (damage, target, source, effect) {
+			if (effect.id === 'psn' || effect.id === 'tox') {
+				this.heal(target.maxhp / 8);
+				return false;
+			}
+		},
+	},
+	//007Nilo
+	"masterofillusions": {
+		id: "masterofillusions",
+		name: "Master of Illusions",
+		onStart: function (pokemon) {
+			this.boost({spa: 2, spe: 2});
+		},
+	},
+	//ggdaca
+	"lordsgrace": {
+		id: "lordsgrace",
+		name: "Lord's Grace",
+		//boosts own atk + def + spd + spe by 1 stage
+		onStart: function (pokemon) {
+			this.boost({atk: 1, def: 1, spd: 1, spe: 1});
+		},
+	},
+	//Horrific17
+	"horrificplays": {
+		id: "horrificplays",
+		name: "Horrific Plays",
+		//starts up Magic Room upon entry
+		onStart: function (pokemon) {
+			this.useMove('magicroom', pokemon);
+		},
+		//fur coat
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(2);
+		},
+		//ignores abilities
+		onModifyMove: function (move) {
+			move.ignoreAbility = true;
+		},
+	},
+	//Stabby the Krabby
+	"readytostab": {
+		id: "readytostab",
+		name: "Ready to Stab",
+		onStart: function (pokemon) {
+			let foeactive = pokemon.side.foe.active;
+			for (let i = 0; i < foeactive.length; i++) {
+				if (foeactive[i].volatiles['substitute']) {
+					this.add('-immune', foeactive[i], '[msg]');
+				} else {
+					this.boost({atk: 2, spe: 2});
+				}
+			}
+		},
+	},
+	//HoeenHero
+	"programmersdomain": {
+		id: "programmersdomain",
+		name: "Programmers Domain",
+		onStart: function (source) {
+			this.setWeather('primordialsea');
+		},
+		onAnySetWeather: function (target, source, weather) {
+			if (this.getWeather().id === 'primordialsea' && !(weather.id in {
+				desolateland: 1,
+				primordialsea: 1,
+				deltastream: 1,
+			})) return false;
+		},
+		onEnd: function (pokemon) {
+			if (this.weatherData.source !== pokemon) return;
+			for (let i = 0; i < this.sides.length; i++) {
+				for (let j = 0; j < this.sides[i].active.length; j++) {
+					let target = this.sides[i].active[j];
+					if (target === pokemon) continue;
+					if (target && target.hp && target.hasAbility('primordialsea')) {
+						this.weatherData.source = target;
+						return;
+					}
+				}
+			}
+			this.clearWeather();
+		},
+		onWeather: function (target, source, effect) {
+			if (effect.id === 'raindance' || effect.id === 'primordialsea') {
+				this.heal(target.maxhp / 16);
+			}
+		},
+		onModifySpe: function (spe, pokemon) {
+			if (this.isWeather(['raindance', 'primordialsea'])) {
+				return this.chainModify(2);
+			}
+		},
+		onModifyMove: function (move) {
+			move.stab = 2;
+		},
+	},
+	"jooj": {
+		id: "jooj",
+		name: "JOOJ",
+		//Deso Land
+		onStart: function (source) {
+			this.setWeather('desolateland');
+		},
+		onAnySetWeather: function (target, source, weather) {
+			if (this.getWeather().id === 'desolateland' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
+		},
+		onEnd: function (pokemon) {
+			if (this.weatherData.source !== pokemon) return;
+			for (let i = 0; i < this.sides.length; i++) {
+				for (let j = 0; j < this.sides[i].active.length; j++) {
+					let target = this.sides[i].active[j];
+					if (target === pokemon) continue;
+					if (target && target.hp && target.hasAbility('desolateland')) {
+						this.weatherData.source = target;
+						return;
+					}
+				}
+			}
+			this.clearWeather();
+			pokemon.removeVolatile('flashfire');
+		},
+		//Adaptability
+		onModifyMove: function (move) {
+			move.stab = 2;
+		},
+		//Flash Fire
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Fire') {
+				move.accuracy = true;
+				if (!target.addVolatile('flashfire')) {
+					this.add('-immune', target, '[msg]', '[from] ability: Flash Fire');
+				}
+				return null;
+			}
+		},
+		effect: {
+			noCopy: true, // doesn't get copied by Baton Pass
+			onStart: function (target) {
+				this.add('-start', target, 'ability: Flash Fire');
+			},
+			onModifyAtkPriority: 5,
+			onModifyAtk: function (atk, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Flash Fire boost');
+					return this.chainModify(1.5);
+				}
+			},
+			onModifySpAPriority: 5,
+			onModifySpA: function (atk, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Flash Fire boost');
+					return this.chainModify(1.5);
+				}
+			},
+			onEnd: function (target) {
+				this.add('-end', target, 'ability: Flash Fire', '[silent]');
+			},
+		},
+		//Magic Guard
+		onDamage: function (damage, target, source, effect) {
+			if (effect.effectType !== 'Move') {
+				return false;
+			}
+		},
+		//Dazzling
+		onFoeTryMove: function (target, source, effect) {
+			if ((source.side === this.effectData.target.side || effect.id === 'perishsong') && effect.priority > 0.1 && effect.target !== 'foeSide') {
+				this.attrLastMove('[still]');
+				this.add('cant', this.effectData.target, 'ability: Dazzling', effect, '[of] ' + target);
+				return false;
+			}
 		},
 	},
 };

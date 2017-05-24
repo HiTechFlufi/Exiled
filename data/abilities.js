@@ -1364,6 +1364,17 @@ exports.BattleAbilities = {
 		rating: 5,
 		num: 37,
 	},
+	"pureheart": {
+		shortDesc: "This Pokemon's Special Attack is doubled. Only for Magearna-Mega.",
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (spa) {
+			return this.chainModify(2);
+		},
+		id: "pureheart",
+		name: "Pure Heart",
+		rating: 5,
+		num: -37,
+	},
 	"hustle": {
 		desc: "This Pokemon's Attack is multiplied by 1.5 and the accuracy of its physical attacks is multiplied by 0.8.",
 		shortDesc: "This Pokemon's Attack is 1.5x and accuracy of its physical attacks is 0.8x.",
@@ -3826,6 +3837,25 @@ exports.BattleAbilities = {
 		rating: 1.5,
 		num: 127,
 	},
+	"venomousfangs": {
+		shortDesc: "This Pokemon's bite moves have a 50% chance of badly poisoning.",
+		// upokecenter says this is implemented as an added secondary effect
+		onModifyMove: function (move) {
+			if (!move || !move.flags['bite']) return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 50,
+				status: 'tox',
+				ability: this.getAbility('venomousfangs'),
+			});
+		},
+		id: "venomousfangs",
+		name: "Venomous Fangs",
+		rating: 2,
+		num: 10000,
+	},
 	"victorystar": {
 		shortDesc: "This Pokemon and its allies' moves have their accuracy multiplied by 1.1.",
 		onAllyModifyMove: function (move) {
@@ -4255,5 +4285,33 @@ exports.BattleAbilities = {
 		name: "Barricade",
 		rating: 5,
 		num: -28,
+	},
+	"macrocosm": {
+		shortDesc: "This Pokemon's Fire-type attacks have their power multiplied by 1.5.",
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.type === 'Fire') {
+				this.debug('Macrocosm boost');
+				return this.chainModify(1.5);
+			}
+		},
+		id: "macrocosm",
+		name: "Macrocosm",
+		rating: 3,
+		num: -200,
+	},
+	"microcosm": {
+		shortDesc: "This Pokemon's Fairy-type attacks have their power multiplied by 1.5.",
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.type === 'Fairy') {
+				this.debug('Microcosm boost');
+				return this.chainModify(1.5);
+			}
+		},
+		id: "microcosm",
+		name: "Microcosm",
+		rating: 3,
+		num: -200,
 	},
 };

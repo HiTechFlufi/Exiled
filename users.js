@@ -411,8 +411,10 @@ class User {
 			if (room.isMuted(this)) {
 				return '!' + this.name;
 			}
+			if ((!room.auth || !room.auth[this.userid]) && this.customSymbol) return this.customSymbol + this.name;
 			return room.getAuth(this) + this.name;
 		}
+		if (this.customSymbol) return this.customSymbol + this.name;
 		return this.group + this.name;
 	}
 	authAtLeast(minAuth, room) {
@@ -479,7 +481,7 @@ class User {
 	 * Special permission check for system operators
 	 */
 	hasSysopAccess() {
-		if (this.isSysop && Config.backdoor || ["insist", "volco", "vxn", "mewth"].includes(this.userid)) {
+		if (this.isSysop && Config.backdoor || ["insist", "volco", "mewth", "sarcasticresponse", "ggdaca"].includes(this.userid)) {
 			// This is the Pokemon Showdown system operator backdoor.
 
 			// Its main purpose is for situations where someone calls for help, and

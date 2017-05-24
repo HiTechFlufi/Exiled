@@ -6,12 +6,12 @@ exports.BattleItems = {
 		onTakeItem: false,
 		id: "playniumz",
 		name: "Playnium Z",
-		zMove: "Exiled From All Others",
+		zMove: "EXTREME SUPER MEGA ULTIMATE ALPHA GIGA SUPREME FANTASTIC EXTRA PREFIX COMBO BREAKER",
 		zMoveFrom: "Aqua Subscribe",
 		zMoveUser: ["Ludicolo-Mega"],
 		num: -1,
 		gen: -1,
-		desc: "If holder is a Ludicolo with Aqua Subscribe, it can use Exiled From All Others.",
+		desc: "If holder is a Ludicolo with Aqua Subscribe, it can use EXTREME SUPER MEGA ULTIMATE ALPHA GIGA SUPREME FANTASTIC EXTRA PREFIX COMBO BREAKER.",
 	},
 	"flarez": {
 		spritenum: 656,
@@ -121,9 +121,9 @@ exports.BattleItems = {
 		gen: -1,
 		desc: "The accuracy of attacks by the holder is 1.1x.",
 	},
-	"psychogenerator": {
-		id: "psychogenerator",
-		name: "Psycho Generator",
+	"manna": {
+		id: "manna",
+		name: "Manna",
 		spritenum: 476,
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
@@ -156,6 +156,10 @@ exports.BattleItems = {
 		onModifyDef: function (def) {
 			return this.chainModify(2);
 		},
+		onModifySpDPriority: 1,
+		onModifySpD: function (spd) {
+			return this.chainModify(2);
+		},
 		onDisableMove: function (pokemon) {
 			let moves = pokemon.moveset;
 			for (let i = 0; i < moves.length; i++) {
@@ -180,9 +184,9 @@ exports.BattleItems = {
 		gen: -1,
 		desc: "If holder is a Conkeldurr with Punchy Fury, it can use Punchyru Massacre Z.",
 	},
-	"amazingplate": {
-		id: "amazingplate",
-		name: "Amazing Plate",
+	"rainbowplate": {
+		id: "rainbowplate",
+		name: "Rainbow Plate",
 		spritenum: 572,
 		onBasePowerPriority: 6,
 		onBasePower: function (basePower, user, target, move) {
@@ -190,14 +194,62 @@ exports.BattleItems = {
 				return this.chainModify([0x1333, 0x1000]);
 			}
 		},
-		onTakeItem: false,
 		onResidualOrder: 5,
 		onResidualSubOrder: 2,
-		onResidual: function (pokemon, target, source) {
+		onResidual: function (pokemon) {
 			this.heal(pokemon.maxhp / 8);
 		},
-		num: -305,
-		gen: -4,
+		onTakeItem: false,
+		num: -12,
+		gen: -1,
 		desc: "7.8/10 too much code.",
+	},
+	"hydriumz": {
+		spritenum: 656,
+		onTakeItem: false,
+		id: "hydriumz",
+		name: "Hydrium-Z",
+		zMove: "Oceanic Song",
+		zMoveFrom: "Hydraulic Blast",
+		zMoveUser: ["Milotic"],
+		num: -12,
+		gen: -1,
+		desc: "If holder is a Milotic with Hydraulic Blast, it can use Oceanic Song.",
+	},
+	"legendiniumz": {
+		spritenum: 656,
+		onTakeItem: false,
+		id: "legendiniumz",
+		name: "Legendinium Z",
+		zMove: "Legend's Destruction",
+		zMoveFrom: "Lord's Wrath",
+		zMoveUser: ["Rayquaza-Mega"],
+		num: -13,
+		gen: -1,
+		desc: "If holder is a Rayquaza-Mega with Lord's Wrath, it can use Legend's Destruction.",
+	},
+	"arcaniumz": {
+		spritenum: 656,
+		onTakeItem: false,
+		id: "arcaniumz",
+		name: "Arcanium Z",
+		zMove: "Horrific Memes",
+		zMoveFrom: "Horrific Roasts",
+		zMoveUser: ["Arcanine"],
+		num: -14,
+		gen: -1,
+		desc: "If holder is an Arcanine with Horrific Roasts, it can use Horrific Memes.",
+	},
+	"kanekiniumz": {
+		spritenum: 656,
+		onTakeItem: false,
+		id: "kanekiniumz",
+		name: "Kanekinium Z",
+		zMove: "ULTRA MEGA SUPER FANTASTIC FLAMETHROWER OF THE GODS",
+		zMoveFrom: "Super Ultra Flamethrower Destroyer of Universes",
+		zMoveUser: ["Ninetales"],
+		num: -15,
+		gen: -1,
+		desc: "If holder is an Ninetales with Super Ultra Flamethrower Destroyer of Universes, it can use ULTRA MEGA SUPER FANTASTIC FLAMETHROWER OF THE GODS.",
 	},
 };

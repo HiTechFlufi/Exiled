@@ -52,9 +52,7 @@ class Poll {
 		let ip = user.latestIp;
 		let userid = user.userid;
 
-		if (userid in this.voters || ip in this.voterIps) {
-			user.sendTo(this.room, "You're already looking at the results.");
-		} else {
+		if (!(userid in this.voters) || !(ip in this.voterIps)) {
 			this.voters[userid] = 0;
 			this.voterIps[ip] = 0;
 		}
@@ -458,7 +456,7 @@ exports.commands = {
 			if (!Dex.data.Formats[key].mod) continue;
 			if (!Dex.data.Formats[key].searchShow) continue;
 			if (toId(target) !== 'all') {
-				let commonMods = ['gen7', 'essb', 'pmd', 'cssb', 'metronome', 'ashspokemon', 'clashoftheregions', 'advancedwars', 'digimon', 'holiday', 'smashingmetagame', 'ssbffa', 'opmetagame', 'fakemons', 'mixandmega', 'slowtown'];
+				let commonMods = ['gen7', 'essb', 'pmd', 'cssb', 'metronome', 'ashspokemon', 'clashoftheregions', 'advancedwars', 'digimon', 'holiday', 'smashingmetagame', 'ssbffa', 'opmetagame', 'fakemons', 'mixandmega', 'slowtown', 'stadium', 'theorymon', 'supercell'];
 				if (commonMods.indexOf(Dex.data.Formats[key].mod) === -1) continue;
 			}
 			options.push(Dex.data.Formats[key].name);

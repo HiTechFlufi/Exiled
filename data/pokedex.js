@@ -14526,7 +14526,7 @@ exports.BattlePokedex = {
 		baseSpecies: "Klefki",
 		types: ["Steel", "Fairy"],
 		baseStats: {hp: 57, atk: 99, def: 121, spa: 70, spd: 117, spe: 85},
-		abilities: {0: "Magic Bounce"}, 
+		abilities: {0: "Magic Bounce"},
 		heightm: 0.3,
 		weightkg: 6,
 		color: "Gray",

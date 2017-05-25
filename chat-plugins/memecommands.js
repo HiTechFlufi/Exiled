@@ -395,7 +395,7 @@ exports.commands = {
 			"/survey create Was Exiled your first Pokemon Showdown side-server?", //5
 			"/survey create Do you like the league system?",
 			"/survey create Do you like the idea of us adding custom megas on Exiled that you can use in regular formats? (OU, UU, Ubers, Etc)",
-			"/survey create What was your worst experience so far on Exiled?", 
+			"/survey create What was your worst experience so far on Exiled?",
 			"/survey create What's your favorite food?",
 			"/survey create What's your favorite activity on a hot summer day?", //10
 			"/survey create What's your favorite drink",

@@ -41,7 +41,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Body Slam", target);
 		},
 		basePower: 150,
-		pp: 1,
+		pp: 0.625,
 		accuracy: 50,
 		status: "par",
 		target: "normal",

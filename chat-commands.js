@@ -73,6 +73,30 @@ exports.commands = {
 
 		return target;
 	},
+	//Coded by flufi for testing purposes.
+	cf: 'cflip',
+	cflip: function (target, room, user, connection, cmd) {
+		let flipping = true;
+		this.sendReply('Choose a side. (Use either /cf heads, or /cf tails)');
+		if (flipping = true && cmd === 'heads') {
+			let side = 'heads';
+		} else if (flipping = true && cmd === 'tails') {
+			let side = 'tails';
+		} else {
+			return this.errorReply('That is not a valid coin side.');
+		}
+		
+		let f = this.random(2); //Rolling for Heads or Tails, 1 is heads, 2 is tails
+		if (f === 1 && flipping = true && side === 'heads') {
+			this.sendReply('You chose Heads. The Result; Heads! You win!');
+		} else if (f === 1 && flipping = true && side === 'tails') {
+			this.sendReply('You chose Tails. The result; Heads! You lose!');
+		} else if (f === 2 && flipping = true && side = 'heads') {
+			this.sendReply('You chose Heads. The result; Tails! You lose!');
+		} else if (f === 2 && flipping = true && side = 'tails') {
+			this.sendReply('You chose Tails. The result; Tails! You win!');
+		}
+	},
 
 	'!battle': true,
 	'battle!': 'battle',

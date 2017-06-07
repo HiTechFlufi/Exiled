@@ -80,7 +80,7 @@ exports.commands = {
 		this.sendReply('Choose a side. (Use either /cf heads, or /cf tails)');
 		if (flipping === true && cmd === 'heads') {
 			let side = 'heads';
-		} else if (flipping = true && cmd === 'tails') {
+		} else if (flipping === true && cmd === 'tails') {
 			let side = 'tails';
 		} else {
 			return this.errorReply('That is not a valid coin side.');

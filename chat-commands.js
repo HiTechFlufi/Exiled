@@ -79,9 +79,9 @@ exports.commands = {
 		const flipping = true;
 		this.sendReply('Choose a side. (Use either /cf heads, or /cf tails)');
 		if (flipping === true && cmd === 'heads') {
-			const side = 'heads';
+			let side = 'heads';
 		} else if (flipping === true && cmd === 'tails') {
-			const side = 'tails';
+			let side = 'tails';
 		} else {
 			return this.errorReply('That is not a valid coin side.');
 		}
@@ -95,7 +95,7 @@ exports.commands = {
 		} else if (f === 2 && flipping === true && side === 'tails') {
 			this.sendReply('You chose Tails. The result; Tails! You win!');
 		}
-		return flipping = false;
+		return false;
 	},
 
 	'!battle': true,

@@ -1207,6 +1207,20 @@ exports.BattleItems = {
 		gen: 6,
 		desc: "If holder is a Diancie, this item allows it to Mega Evolve in battle.",
 	},
+	"noctowlite": {
+		id: "noctowlite",
+		name: "Noctowlite",
+		spritenum: 624,
+		megaStone: "Noctowl-Mega",
+		megaEvolves: "Noctowl",
+		onTakeItem: function (item, source) {
+			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
+			return true;
+		},
+		num: 764,
+		gen: 6,
+		desc: "If holder is a Noctowl, this item allows it to Mega Evolve in battle.",
+	},
 	"diveball": {
 		id: "diveball",
 		name: "Dive Ball",

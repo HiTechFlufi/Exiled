@@ -77,6 +77,7 @@ exports.commands = {
 	cf: 'cflip',
 	cflip: function (target, room, user, connection, cmd) {
 		const flipping = true;
+		let side = true;
 		this.sendReply('Choose a side. (Use either /cf heads, or /cf tails)');
 		if (flipping === true && cmd === 'heads') {
 			let side = 'heads';

@@ -86,6 +86,18 @@ exports.BattleAbilities = {
 		rating: 4,
 		num: 185,
 	},
+	"naturalintelligence": {
+		shortDesc: "This Pokemon's moves have their accuracy multiplied by 1.5.",
+		onSourceModifyAccuracy: function (accuracy) {
+			if (typeof accuracy !== 'number') return;
+			this.debug('compoundeyes - enhancing accuracy');
+			return accuracy * 1.5;
+		},
+		id: "naturalintelligence",
+		name: "Natural Intelligence",
+		rating: 4,
+		num: 14,
+	},
 	"airlock": {
 		shortDesc: "While this Pokemon is active, the effects of weather conditions are disabled.",
 		onStart: function (pokemon) {

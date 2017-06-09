@@ -85,7 +85,6 @@ exports.commands = {
 		} else {
 			return this.errorReply('That is not a valid coin side.');
 		}
-		
 		const f = this.random(2); //Rolling for Heads or Tails, 1 is heads, 2 is tails
 		if (f === 1 && flipping === true && side === 'heads') {
 			this.sendReply('You chose Heads. The Result; Heads! You win!');
@@ -96,8 +95,7 @@ exports.commands = {
 		} else if (f === 2 && flipping === true && side === 'tails') {
 			this.sendReply('You chose Tails. The result; Tails! You win!');
 		}
-		
-		return const flipping = false;
+		return flipping = false;
 	},
 
 	'!battle': true,

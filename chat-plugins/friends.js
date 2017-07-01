@@ -164,5 +164,5 @@ exports.commands = {
 	friendlist: function (room, user) {
 		this.sendReplyBox('/friends list of friends' + BR + '/addfriend to add a friend' + BR + '/removefriend to remove a friend' + BR + BR + 'Friendlist made by Niisama');
 	},
-	friendshelp: ["/addfriend to add a new friend"],
+	friendshelp: ["/addfriend to add a new friend",],
 };
